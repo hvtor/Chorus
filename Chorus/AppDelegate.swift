@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
          Parse.setApplicationId("v2hcHWmn5vl62VEh4KLrFBaA9IV2bBhvjvPMdG2K", clientKey: "dflCH9xbkA23KsSbdx0XlzDn5R0yLipjN3JWPGvF")
-        
-        return true
+
+
+       return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -33,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        
+
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

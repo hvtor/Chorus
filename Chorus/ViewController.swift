@@ -21,21 +21,40 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+            if (PFUser.currentUser()==nil) {
+                var logInViewController = PFLogInViewController()
+                var signUpViewController = PFSignUpViewController()
+            
+                logInViewController.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.PasswordForgotten | PFLogInFields.Facebook | PFLogInFields.Twitter
 
-            var logInViewController = PFLogInViewController()
+                logInViewController.logInView?.backgroundColor = UIColor .blackColor()
             
-            logInViewController.fields = PFLogInFields.UsernameAndPassword | PFLogInFields.LogInButton | PFLogInFields.SignUpButton | PFLogInFields.PasswordForgotten | PFLogInFields.Facebook | PFLogInFields.Twitter
             
-            logInViewController.delegate = self
+                logInViewController.delegate = self
             
-            var signUpViewController = PFSignUpViewController()
+                signUpViewController.delegate = self
+                
+                logInViewController.signUpController = signUpViewController
             
-            signUpViewController.delegate = self
+                var logoImage = UIImageView()
+                logoImage.image = UIImage(named: "chorus")
+                logoImage.contentMode = UIViewContentMode.ScaleAspectFill
             
-            logInViewController.signUpController = signUpViewController
+                logInViewController.logInView?.logo = logoImage
+
+                var logoImageSignUp = UIImageView()
+                logoImageSignUp.image = UIImage(named: "chorus")
+                logoImageSignUp.contentMode = UIViewContentMode.ScaleAspectFill
             
-            self.presentViewController(logInViewController, animated: true, completion: nil)
-        
+            
+                signUpViewController.signUpView?.logo = logoImageSignUp
+                signUpViewController.signUpView?.backgroundColor = UIColor .blackColor()
+            
+            
+                self.presentViewController(logInViewController, animated: true, completion: nil)
+            }
+            println(PFUser.currentUser())
+    
     }
 
     override func didReceiveMemoryWarning() {
